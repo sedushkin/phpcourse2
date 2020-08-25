@@ -1,43 +1,35 @@
 <?php
-abstract class Product {
-    protected $name;
-    public $price;
-    protected static $income=0;
 
-    function __construct($name,$price=0) {
-        $this->name=$name;
-        $this->price=$price;
+require_once 'Twig/Autoloader.php';
+require_once 'classes/Application.php';
+require_once 'classes/View.php';
 
-    }
+Twig_Autoloader::register();
 
-    abstract public function sell($quantity);
+try {
+	// Указывает, где хранятся шаблоны
+	$loader = new Twig_Loader_Filesystem('templates');
+	
+	// Инициализируем Twig
+	$twig = new Twig_Environment($loader);
+	
+	$view = new \Classes\View($twig);
+	$app = new \Classes\Application($view);
 
-    public function print_income(){
-        echo "Общий доход составляет".self::$income;
-    }
+	$page = $_GET["p"];
+
+	switch($page) {
+		case 1: {
+			$app->example1();
+			break;
+		}
+		case 2: {
+			$app->example2();
+			break;
+		}		
+	}
+
+} catch (Exception $e) {
+	die ('ERROR: ' . $e->getMessage());
 }
-
-class Digital_product extends Product {
-    function __construct($r_product){
-        $this->name=$r_product->name;
-        $this->price=$r_product->price;
-    }
-    public function sell($quantity){
-        Parent::$income = Parent::$income + ($quantity*$this->price*0.5);
-
-    }
-} 
-
-class Real_product extends Product {
-    public function sell($quantity){
-    Parent::$income = Parent::$income + ($quantity*$this->price); 
-    }
-
-}
-
-class Weight_product extends Product {
-    public function sell($weight) {
-        Parent::$income = Parent::$income + ($quantity*$this->price);
-    }
-}
-
+?>
