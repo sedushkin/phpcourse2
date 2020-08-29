@@ -1,6 +1,6 @@
 <?php
 
-namespace Classes;
+namespace application\service;
 
 class View {
 
@@ -10,8 +10,8 @@ class View {
 		$this->tEngine = $engine;
 	}	
 
-	public function render($template, $params) {
-		$template = $this->tEngine->loadTemplate($template.".tmpl"); //file_get_contents
+	public function render($template, $params = []) {
+		$template = $this->tEngine->loadTemplate($template.".tmpl");
 		echo $template->render($params);
 	}
 }

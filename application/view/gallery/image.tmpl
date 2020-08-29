@@ -1,0 +1,13 @@
+<html>
+
+<div>
+
+        {% for image in galleryCollection %}
+         <div>
+            <img src="{{image.src}}" alt="{{image.name}}">
+            <div>{{image.name}}</div>
+         </div>   
+        {% endfor %}
+    </div>
+
+</html>

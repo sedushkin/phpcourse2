@@ -6,4 +6,8 @@ RewriteCond %{REQUEST_FILENAME} -f [NC,OR]
 RewriteCond %{REQUEST_FILENAME} -d [NC]
 RewriteRule .* - [L]
 
-RewriteRule ^(.*)/$ ?path=$1 [QSA,L]
+
+RewriteCond %{REQUEST_URI} ^/$ [NC] 
+RewriteRule ^(.*)$ http://%1/?path=home/index [L]
+
+

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    <div>
+        {% for image in galleryCollection %}
+         <div>
+            <a href="/?path=gallery/image&id={{image.id}}"><img src="{{image.src_small}}" alt="{{image.name}}"></a>
+            <div>{{image.name}}</div>
+         </div>   
+        {% endfor %}
+    </div>
+</body>
+</html>

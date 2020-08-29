@@ -1,33 +1,39 @@
 <?php
 
-require_once 'Twig/Autoloader.php';
-require_once 'classes/Application.php';
-require_once 'classes/View.php';
+define("BASE_PATH", dirname(dirname(__FILE__)));
+define("APP", dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."application");
 
-Twig_Autoloader::register();
+require_once APP.DIRECTORY_SEPARATOR.'service'.DIRECTORY_SEPARATOR.'Autoloader.php';
+require_once APP.DIRECTORY_SEPARATOR.'service'.DIRECTORY_SEPARATOR.'Twig'.DIRECTORY_SEPARATOR.'Autoloader.php';
 
 try {
-	// Указывает, где хранятся шаблоны
-	$loader = new Twig_Loader_Filesystem('templates');
-	
-	// Инициализируем Twig
-	$twig = new Twig_Environment($loader);
-	
-	$view = new \Classes\View($twig);
-	$app = new \Classes\Application($view);
 
-	$page = $_GET["p"];
+	\Twig_Autoloader::register();
+	\application\service\Autoloader::register();
 
-	switch($page) {
-		case 1: {
-			$app->example1();
-			break;
-		}
-		case 2: {
-			$app->example2();
-			break;
-		}		
-	}
+	$loader = new \Twig_Loader_Filesystem(APP.DIRECTORY_SEPARATOR.'view');
+	$twig = new \Twig_Environment($loader);
+
+	/**
+	 * Supporting objects
+	 */
+	$view = new \application\service\View($twig);
+	$config = new \application\service\Config();
+	$request = new \application\service\Request();
+
+	/**
+	 * Define registry
+	 */
+	\application\service\Service::set("view", $view);
+	\application\service\Service::set("config", $config);
+	\application\service\Service::set("request", $request);
+
+	/**
+	 * Run application
+	 */
+	$app = new \application\service\FrontController();
+	$app->run();
+
 
 } catch (Exception $e) {
 	die ('ERROR: ' . $e->getMessage());
