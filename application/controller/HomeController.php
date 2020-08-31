@@ -20,7 +20,7 @@ class HomeController extends FrontController {
 	}
 
 	public function action_show() {
-		$this->view->render("home/index", [
+		return $this->view->render("home/index", [
 			"title"=>$this->config->get("title"),
 			"version"=>$this->config->get("version"),
 		]);
