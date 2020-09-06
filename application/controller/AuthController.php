@@ -32,9 +32,15 @@ class AuthController extends BaseController {
 
 		$userModel = new UserModel();
 		$user = $userModel->getUserByNameAndPassword($login, $password);
-
 		$authModel = new AuthModel();
 		$authModel->createSession($user);
+		echo $authModel;
+		return $this->view->render("home/index", [
+			"title"=>$this->config->get("title"),
+			"version"=>$this->config->get("version")
+		]);
+		
+		
 	}
 
 	/**

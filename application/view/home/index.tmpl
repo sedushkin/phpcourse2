@@ -1,6 +1,5 @@
-<html>
-  <head></head>
-  <body>
+{% include 'templates/header.tmpl' %}
+
 	<h2>{{title}}</h2>
 	<h4>{{version}}</h4>
 
@@ -9,5 +8,5 @@
 		<li><a href="/?path=gallery/index">Gallery</a></li>
 		<li><a href="/?path=user/index">Users</a></li>
 	</ul>
-  </body>
-</html>
+
+{% include 'templates/footer.tmpl' %}
