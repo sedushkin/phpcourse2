@@ -13,7 +13,7 @@ class FrontController {
 		$session;
 	
 	public function __construct() {
-		$this->session = Service::get("session");
+		$this->session = Service::session();
 		$this->view = Service::view();
 		$this->config = Service::config();
 		$this->request = Service::request();

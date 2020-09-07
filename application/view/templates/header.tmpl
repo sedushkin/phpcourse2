@@ -13,16 +13,16 @@
 	<div class="container">
 		<h2>{{title}}</h2>
 		<nav class="navbar navbar-light bg-light">
-			<a class="navbar-brand" href="/?path=product/index">Products</a>
-
+			<a class="navbar-brand" href="/?path=product/index">Товары</a>
+			<a class="navbar-brand" href="/?path=gallery/index">Галлерея</a>
 			{% if not user %}
-				<a class="navbar-brand" href="/?path=auth/index">Log in</a>
-				<a class="navbar-brand" href="/?path=auth/signup">Sign up</a>
-				<a class="navbar-brand" href="/?path=gallery/index">Sign up</a>
+				<a class="navbar-brand" href="/?path=auth/index">Вход</a>
+				<a class="navbar-brand" href="/?path=auth/signup">Зарегистрироваться</a>
+				
 			{% else %}
-				<a class="navbar-brand" href="/?path=user/index">Profile</a>
-				<a class="navbar-brand" href="/?path=basket/index">Basket</a>
-				<a class="navbar-brand" href="/?path=auth/logout">Log out</a>
+				<a class="navbar-brand" href="/?path=user/index">Профиль</a>
+				<a class="navbar-brand" href="/?path=basket/index">Корзина</a>
+				<a class="navbar-brand" href="/?path=auth/logout">Выйти</a>
 			{% endif %}
 		</nav>
 

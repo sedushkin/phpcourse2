@@ -5,6 +5,7 @@ namespace application\controller;
 use \application\service\Service;
 use \application\controller\BaseController;
 use \application\model\UserModel;
+use \application\model\AuthModel;
 
 /**
  * /?path=auth/{action}
@@ -35,11 +36,47 @@ class AuthController extends BaseController {
 		$authModel = new AuthModel();
 		echo ("Аутмодель2");
 		
-		$auth = $authModel->createSession($user);
-		cho ("Аутмодель2");
+		$authModel->createSession($user);
+
+		echo ("Аутмодель3");
+		
 		$this->request->redirect("/?path=home/index");
-		cho ("Аутмодель2");
+		
 	}
+
+/**
+	 * /?path=auth/signup
+	 */
+	public function action_signup() {
+		return $this->view->render("auth/signup");
+	}
+
+	/**
+	 * /?path=auth/register
+	 */
+	public function action_register() {
+
+		if (!$this->request->isPost()) {
+			$this->request->redirect("/?path=auth/signup&message=Post is required");
+		}
+
+		$name = $this->request->getPost("name");
+		$password = $this->request->getPost("password");
+		$email = $this->request->getPost("email");
+
+		if (!$password || !$email) {
+			$this->request->redirect("/?path=auth/signup&message=Login and password are required");
+		}
+
+		$userModel = new UserModel();
+		$userModel->createUser($name, $password, $email);
+
+		$this->session->set("user", $user);
+		$this->request->redirect("/?path=user/index");
+	}	
+
+
+
 
 	/**
 	 * /?path=auth/logout

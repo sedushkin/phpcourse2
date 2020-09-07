@@ -8,7 +8,11 @@ class View {
 
 	public function __construct(\Twig_Environment $engine) {
 		$this->tEngine = $engine;
-	}	
+	}
+	
+	public function addGlobal($key, $value) {
+		$this->tEngine->addGlobal($key, $value);
+	}
 
 	public function render($template, $params = []) {
 		$template = $this->tEngine->loadTemplate($template.".tmpl");
