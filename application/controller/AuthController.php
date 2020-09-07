@@ -29,12 +29,16 @@ class AuthController extends BaseController {
 
 		$login = $this->request->getPost("login");
 		$password = $this->request->getPost("password");
-
 		$userModel = new UserModel();
 		$user = $userModel->getUserByNameAndPassword($login, $password);
-
+		
 		$authModel = new AuthModel();
-		$authModel->createSession($user);
+		echo ("Аутмодель2");
+		
+		$auth = $authModel->createSession($user);
+		cho ("Аутмодель2");
+		$this->request->redirect("/?path=home/index");
+		cho ("Аутмодель2");
 	}
 
 	/**

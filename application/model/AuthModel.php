@@ -9,6 +9,7 @@ use \application\model\UserModel;
 class AuthModel extends BaseModel {
 
 	public function createSession($user) {
+	echo ("начинаем");
 		$this->session->set("user", $user);
 	}
 	

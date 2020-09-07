@@ -1,8 +1,13 @@
 <html>
   <head>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<script src="js/bootstrap.min.js"></script>
+	<!--<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/bootstrap.min.js"></script>-->	
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
   </head>
   <body>
 	<div class="container">
@@ -13,6 +18,7 @@
 			{% if not user %}
 				<a class="navbar-brand" href="/?path=auth/index">Log in</a>
 				<a class="navbar-brand" href="/?path=auth/signup">Sign up</a>
+				<a class="navbar-brand" href="/?path=gallery/index">Sign up</a>
 			{% else %}
 				<a class="navbar-brand" href="/?path=user/index">Profile</a>
 				<a class="navbar-brand" href="/?path=basket/index">Basket</a>
