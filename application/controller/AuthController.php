@@ -34,13 +34,8 @@ class AuthController extends BaseController {
 		$user = $userModel->getUserByNameAndPassword($login, $password);
 		
 		$authModel = new AuthModel();
-		echo ("Аутмодель2");
-		
 		$authModel->createSession($user);
-
-		echo ("Аутмодель3");
-		
-		$this->request->redirect("/?path=home/index");
+		return $this->request->redirect("?path=home/index");
 		
 	}
 
@@ -72,7 +67,7 @@ class AuthController extends BaseController {
 		$userModel->createUser($name, $password, $email);
 
 		$this->session->set("user", $user);
-		$this->request->redirect("/?path=user/index");
+		return $this->request->redirect("?path=user/index");
 	}	
 
 

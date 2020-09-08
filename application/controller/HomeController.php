@@ -4,6 +4,7 @@ namespace application\controller;
 
 use \application\service\Service;
 use \application\service\FrontController;
+use \application\service\Session;
 
 class HomeController extends FrontController {
 
@@ -13,9 +14,11 @@ class HomeController extends FrontController {
 	}
 
 	public function action_index() {
+		
 		return $this->view->render("home/index", [
 			"title"=>$this->config->get("title"),
-			"version"=>$this->config->get("version")
+			"version"=>$this->config->get("version"),
+			"user"=>$this->session->get("user")
 		]);
 	}
 

@@ -3,6 +3,7 @@
 namespace application\service;
 
 use \application\service\Service;
+use \application\service\Session;
 
 class FrontController {
 
@@ -20,7 +21,9 @@ class FrontController {
 	}
 
 	protected function before() {
+		
 		return true;
+		
 	}
 
 	protected function after() {

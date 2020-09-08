@@ -1,8 +1,8 @@
 <?php
 
 return [
-	"title" => "My new shop",
-	"version" => "0.0.1",
+	"title" => "Новый магазин",
+	"version" => "0.0.2",
 /* for local server */
 /*	"db"=>[
 		"dsn"=>"mysql:host=localhost;dbname=shop",

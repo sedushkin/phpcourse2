@@ -4,10 +4,13 @@ namespace application\service;
 
 class Session {
 
-	public function __construct() {
+/*	public function __construct() {
 		session_start();
 	}
-
+*/
+public function start() {
+		@session_start();
+	}
 	public function get($key) {
 		return isset($_SESSION[$key]) ? $_SESSION[$key] : null;
 	}
